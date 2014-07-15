@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<title>Hello World</title>
+		<script src="cordova.js"></script>
+		<script src="phonegap.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"></script>
+		<script src="childbrowser.js"></script>
+		
+
 	</head>
 	<body>
-		<h1>Murder to go</h1>
+	<script>
+	document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+	</script>
+			<div style="height:450px">
+				<h1 style="padding:20px">Playing With Murder</h1>
+					<div id="main" style="height:250px;width:250px">
+						<p>Which game would you like to play?</p>
+						<p>Visit playingwithmurder.com</p>
+						<img src="link.png" alt="name">
+					</div>
+			<div>
 	</body>
 </html>

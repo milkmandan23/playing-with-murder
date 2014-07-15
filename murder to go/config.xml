@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-	<widget id = "HY69V2SUMQ.com.apps.murdertogo"
-		version = "0.0.1" >
+	<widget xmlns		= "http://www.w3.org/ns/widgets"
+		xmlns:gap		= "http://phonegap.com/ns/1.0"
+		xmlns:android	= "http://schemas.android.com/apk/res/android"
+		id = "HY69V2SUMQ.com.apps.murdertogo"
+		version = "1.0.0" >
 		
 	<name>Murder To Go</name>
 	
@@ -8,4 +11,31 @@
 		test app
 	</description>
 	
+	<!--- core plugins --->
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+	<gap:plugin name="com.phonegap.plugins.childbrowser" />
+	<gap:plugin name="org.apache.cordova.battery-status" />
+    <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.contacts" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.vibration" />
+	<!---<gap:plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />--->
+	<!---<gap:plugin name="InAppBrowser" value="CDVInAppBrowser" />--->
+	
+	<preference name="UTWebViewBounce" value="false" />
+	<preference name="DisallowOverscroll" value="true" />
 </widget>
