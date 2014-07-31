@@ -8,21 +8,48 @@
 		<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"></script>
 		<script src="childbrowser.js"></script>
+                <script type="text/javascript" charset="utf-8" src="create database.js"></script>
 		
-
+                <script>
+                    function next() {
+                        document.location = "pages/main.html";
+                    }
+                    
+                    function loadXMLDoc() {
+                        var xmlhttp;
+                        if (window.XMLHttpRequest) {
+                            xmlhttp = new XMLHttpRequest();
+                        }
+                        else {
+                            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        xmlhttp.onreadystatechange = function() {
+                            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                document.getElementById("testid").innerHTML = xmlhttp.responseText;
+                            }
+                        }
+                        xmlhttp.open("GET", "https://s3-us-west-2.amazonaws.com/account.db/Account+DB.txt", true)
+                        xmlhttp.send();
+                    }
+                </script>
 	</head>
 	<body>
 	<script>
 	document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
 	</script>
 			<div style="height:450px">
-				<h1 style="padding:20px">Playing With Murder</h1>
-					<div id="main" style="height:250px;width:250px">
-						<p>Which game would you like to play?</p>
-						<p>Visit playingwithmurder.com</p>
-						<img src="link.png" alt="name">
-					</div>
+                            <center><h1 style="padding:20px">Playing With Murder</h1></center>
+                                <center><div id="main" style="height:250px;width:250px">
+                                        <table>
+                                            <tr><td>Which game would you like to play?</td></tr>
+                                            <tr><td><p onclick="next()">link to temp main</td></tr>
+                                            <tr><td>Visit playingwithmurder.com</td></tr>
+                                            <tr><td><a href="http://www.playingwithmurder.com"><img src="link.png" alt="link"></a></td></tr>
+                                        </table>
+                                                </div></center>
+                                <div id="testid"></div>
 			</div>
-        is commit working?
+        <script>loadXMLDoc()</script>
+        <!---<script>document.getElementById("testid").innerHTML = window.localStorage.getItem("key");</script>--->
 	</body>
 </html>
