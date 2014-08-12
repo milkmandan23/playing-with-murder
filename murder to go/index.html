@@ -9,7 +9,7 @@
 		<script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"></script>
 		<script src="childbrowser.js"></script>
                 <script type="text/javascript" charset="utf-8" src="create database.js"></script>
-		
+                <script src="jquery.mobile/jquery.mobile-1.0rc2.js"></script>
                 <script>
                     function next() {
                         document.location = "pages/main.html";
@@ -25,31 +25,67 @@
                         }
                         xmlhttp.onreadystatechange = function() {
                             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                document.getElementById("testid").innerHTML = xmlhttp.responseText;
+                                xmlDoc = xmlhttp.responseXML;
+                                
                             }
                         }
-                        xmlhttp.open("GET", "https://s3-us-west-2.amazonaws.com/account.db/Account+DB.txt", true)
+                        xmlhttp.open("GET", "https://s3-us-west-2.amazonaws.com/account.db/Account+DB.xml", true)
                         xmlhttp.send();
                     }
+                    function findStories() {
+                        console.log("in method");
+                        var mys_str = window.localStorage.getItem("mys");
+                        for (i = 0; i < mys_str.length; i++) {
+                            console.log("in loop " + mys_str.charAt(i));
+                            try {
+                            switch(mys_str.charAt(i)) {
+                                case "m":
+                                    document.getElementById("m").removeAttribute("hidden");
+                                    break;
+                                case "c":
+                                    document.getElementById("c").removeAttribute("hidden");
+                                    break;
+                                case "s":
+                                    document.getElementById("s").removeAttribute("hidden");
+                                    break;
+                                default:
+                                    break;
+                            }
+                        } catch (e) {
+                            console.log(mys_str.charAt(i) + " " + e.message());
+                        }
+                        }
+                    }
                 </script>
+                
 	</head>
 	<body>
 	<script>
 	document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
 	</script>
-			<div style="height:450px">
+                    <center><div style="height:450px;width:300px">
+                            <h4 style="color:white" onclick="document.location = 'pages/login.html'">Back</h4>
                             <center><h1 style="padding:20px">Playing With Murder</h1></center>
-                                <center><div id="main" style="height:250px;width:250px">
+                                <div id="main" style="height:250px;width:250px">
                                         <table>
                                             <tr><td>Which game would you like to play?</td></tr>
-                                            <tr><td><p onclick="next()">link to temp main</td></tr>
+                                            <tr><td>
+                                                    <form>
+                                                        <select name="mysteries">
+                                                            <option id="blank" visible></option>
+                                                            <option id="m" hidden>murder in manhattan</option>
+                                                            <option id="c" hidden>wha whaat?!</option> 
+                                                            <option id="s" hidden>set sail for disaster</option>
+                                                        </select>
+                                                    </form>
+                                                </td></tr>
                                             <tr><td>Visit playingwithmurder.com</td></tr>
                                             <tr><td><a href="http://www.playingwithmurder.com"><img src="link.png" alt="link"></a></td></tr>
                                         </table>
-                                                </div></center>
+                                                </div>
                                 <div id="testid"></div>
-			</div>
-        <script>loadXMLDoc()</script>
+                        </div></center>
+        <script>findStories()</script>
         <!---<script>document.getElementById("testid").innerHTML = window.localStorage.getItem("key");</script>--->
 	</body>
 </html>
