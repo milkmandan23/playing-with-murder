@@ -1,79 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<title>Hello World</title>
-		<script src="cordova.js"></script>
-		<script src="phonegap.js"></script>
-		<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.1.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"></script>
-		<script src="childbrowser.js"></script>
-                <script type="text/javascript" charset="utf-8" src="create database.js"></script>
-                <script src="jquery.mobile/jquery.mobile-1.0rc2.js"></script>
-                <script>
-                    function next() {
-                        document.location = "pages/main.html";
-                    }
-                    function findStories() {
-                        var mys_str = window.localStorage.getItem("mys");
-                        for (i = 0; i < mys_str.length; i++) {
-                            try {
-                            switch(mys_str.charAt(i)) {
-                                case "m":
-                                    document.getElementById("m").removeAttribute("hidden");
-                                    break;
-                                case "c":
-                                    document.getElementById("c").removeAttribute("hidden");
-                                    break;
-                                case "s":
-                                    document.getElementById("s").removeAttribute("hidden");
-                                    break;
-                                default:
-                                    break;
-                            }
-                        } catch (e) {
-                            console.log(mys_str.charAt(i) + " " + e.message());
-                        }
-                        }
-                    }
-                    
-                    function next(mys) {
-                        console.log("in method")
-                        window.localStorage.setItem("current", mys);
-                        location.replace("pages/main.html")
-                    }
-                </script>
-                
-	</head>
-	<body>
-	<script>
-	document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
-	</script>
-                    <center><div id="backdrop1">
-                            <h4 style="color:white" onclick="document.location = 'pages/login.html'">Back</h4>
-                            <center><h1>Playing With Murder</h1></center>
-                                <div id="backdrop2">
-                                        <table>
-                                            <tr><td>Which game would you like to play?</td></tr>
-                                            <tr><td>
-                                                    <form>
-                                                        <select name="mysteries" id="mysteries">
-                                                            <option id="blank"></option>
-                                                            <option value="m" id="m" hidden>murder in manhattan</option>
-                                                            <option value="c" id="c" hidden>the terrible castle of baron castaign</option> 
-                                                            <option value="s" id="s" hidden>set sail for disaster</option>
-                                                        </select>
-                                                        <button type="button" onclick="next(document.getElementById('mysteries').value)">
-                                                            Submit</button>
-                                                    </form>
-                                                </td></tr>
-                                            <tr><td>Visit playingwithmurder.com</td></tr>
-                                            <tr><td><a href="http://www.playingwithmurder.com"><img src="link.png" alt="link"></a></td></tr>
-                                        </table>
-                                                </div>
-                                <div id="testid"></div>
-                        </div></center>
-        <script>findStories()</script>
-        <!---<script>document.getElementById("testid").innerHTML = window.localStorage.getItem("key");</script>--->
-	</body>
+    <head>
+        <title>
+        </title>
+    </head>
+    <body>
+        <script>
+            document.location = "pages/story select.html";
+        </script>
+    </body>
 </html>

@@ -1,34 +1,42 @@
-div {
-	background-color: #373636;
-        border: 2px solid;
-	border-radius:15px;
-	}
+
 	
         div#backdrop1 {
+            background-color: #373636;
             width: 300px;
             height: 450px;
+            position: relative;
+            
         }
 body {
 	background-color: #000000;
 	}
 	
+        h4 {
+            position: absolute;
+            left: 20px;
+            border-style: solid;
+            border-width: 1px;
+        }
 div#backdrop2 {
 	background-color: #FFFFFF;
 	
         height: 250px;
         width: 250px;
+        border: 2px solid;
+	border-radius:15px;
 	}
      div#backdrop3 {
 	background-color: #FFFFFF;
 	
         height: 150px;
         width: 250px;
+        border: 2px solid;
+	border-radius:15px;
 	}   
         
 	
 h1 {
 	color: #FFFFFF;
-        padding: 20px;
 	}
 	
 td	{
