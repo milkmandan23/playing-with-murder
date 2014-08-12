@@ -33,10 +33,8 @@
                         xmlhttp.send();
                     }
                     function findStories() {
-                        console.log("in method");
                         var mys_str = window.localStorage.getItem("mys");
                         for (i = 0; i < mys_str.length; i++) {
-                            console.log("in loop " + mys_str.charAt(i));
                             try {
                             switch(mys_str.charAt(i)) {
                                 case "m":
@@ -56,6 +54,12 @@
                         }
                         }
                     }
+                    
+                    function next(mys) {
+                        console.log("in method")
+                        window.localStorage.setItem("current", mys);
+                        location.replace("pages/main.html")
+                    }
                 </script>
                 
 	</head>
@@ -71,12 +75,14 @@
                                             <tr><td>Which game would you like to play?</td></tr>
                                             <tr><td>
                                                     <form>
-                                                        <select name="mysteries">
-                                                            <option id="blank" visible></option>
-                                                            <option id="m" hidden>murder in manhattan</option>
-                                                            <option id="c" hidden>wha whaat?!</option> 
-                                                            <option id="s" hidden>set sail for disaster</option>
+                                                        <select name="mysteries" id="mysteries">
+                                                            <option id="blank"></option>
+                                                            <option value="m" id="m" hidden>murder in manhattan</option>
+                                                            <option value="c" id="c" hidden>the terrible castle of baron castaign</option> 
+                                                            <option value="s" id="s" hidden>set sail for disaster</option>
                                                         </select>
+                                                        <button type="button" onclick="next(document.getElementById('mysteries').value)">
+                                                            Submit</button>
                                                     </form>
                                                 </td></tr>
                                             <tr><td>Visit playingwithmurder.com</td></tr>
