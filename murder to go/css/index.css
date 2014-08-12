@@ -1,21 +1,36 @@
 div {
-	background-color: #373636
-	}
-	
-body {
-	background-color: #000000
-	}
-	
-#main {
-	background-color: #FFFFFF;
-	border: 2px solid;
+	background-color: #373636;
+        border: 2px solid;
 	border-radius:15px;
 	}
 	
-h1 {
-	color: #FFFFFF
+        div#backdrop1 {
+            width: 300px;
+            height: 450px;
+        }
+body {
+	background-color: #000000;
 	}
 	
-p	{
-	color: #990000
+div#backdrop2 {
+	background-color: #FFFFFF;
+	
+        height: 250px;
+        width: 250px;
+	}
+     div#backdrop3 {
+	background-color: #FFFFFF;
+	
+        height: 150px;
+        width: 250px;
+	}   
+        
+	
+h1 {
+	color: #FFFFFF;
+        padding: 20px;
+	}
+	
+td	{
+	color: #990000;
 	}

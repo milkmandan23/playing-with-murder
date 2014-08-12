@@ -14,24 +14,6 @@
                     function next() {
                         document.location = "pages/main.html";
                     }
-                    
-                    function loadXMLDoc() {
-                        var xmlhttp;
-                        if (window.XMLHttpRequest) {
-                            xmlhttp = new XMLHttpRequest();
-                        }
-                        else {
-                            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                        }
-                        xmlhttp.onreadystatechange = function() {
-                            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                xmlDoc = xmlhttp.responseXML;
-                                
-                            }
-                        }
-                        xmlhttp.open("GET", "https://s3-us-west-2.amazonaws.com/account.db/Account+DB.xml", true)
-                        xmlhttp.send();
-                    }
                     function findStories() {
                         var mys_str = window.localStorage.getItem("mys");
                         for (i = 0; i < mys_str.length; i++) {
@@ -67,10 +49,10 @@
 	<script>
 	document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
 	</script>
-                    <center><div style="height:450px;width:300px">
+                    <center><div id="backdrop1">
                             <h4 style="color:white" onclick="document.location = 'pages/login.html'">Back</h4>
-                            <center><h1 style="padding:20px">Playing With Murder</h1></center>
-                                <div id="main" style="height:250px;width:250px">
+                            <center><h1>Playing With Murder</h1></center>
+                                <div id="backdrop2">
                                         <table>
                                             <tr><td>Which game would you like to play?</td></tr>
                                             <tr><td>

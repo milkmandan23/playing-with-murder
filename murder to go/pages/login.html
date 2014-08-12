@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <script>
+            
+            function findAccount(address) {
+                alert(address);
+                var xmlhttp;
+                try {
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    return false;
+                }
+            } catch (e) {
+                alert("There has been a problem making the request." + e.message());
+            }
+                xmlhttp.open("GET", "http://google.com", true);
+                xmlhttp.onreadystatechange = function() {
+                   if (xmlhttp.readyState == 4 && (xmlhttp.status == 200 || xmlhttp.status == 0)) {
+                       alert("in loop");
+                       alert(xmlhttp.readyState + " " + xmlhttp.status);
+                      /*  var xmlDocTemp = xmlhttp.responseText;
+                        var parser = new DOMParser();
+                        var xmlDoc = parser.parseFromString(xmlDocTemp, "application/xml");
+                        accounts = xmlDoc.getElementsByTagName("account");
+                        for (i = 0; i < accounts.length; i++) {
+                            if (accounts[i].getAttribute("address") == address) {
+                                alert("anything?");
+                                document.getElementById("blank").innerHTML = accounts[i].getElementsByTagName("mys")[0].innerHTML;
+                                window.localStorage.setItem("account", address);
+                                return;
+                            }
+                        }*/
+                        
+                    }
+                }
+    
+    
+
+                
+                xmlhttp.send();
+                
+                
+            }
+        </script>
+    </head>
+    <body>
+    <center><div style="height:450px;width:300px">
+            <center><h1>Playing With Murder</h1></center>
+            <div id="main" style="height:250px;width:250">
+                <table>
+                    <tr><td>Access Your Game</td></tr>
+                    <tr><td>Once you have purchased your game on PlayingWithMurder.com, 
+                            enter the email address you used on your order to unlock 
+                            access to your games</td></tr>
+                    <tr><td><form name="login" onsubmit="findAccount(addressform.value)"><input type="text" name="addressform"></form></td></tr>
+                    <tr><td><div id="doitagain"></div></td></tr>
+                    
+                </table>
+                
+            </div>
+        </div></center>
+    <script>
+        if (window.localStorage.getItem("notfound") == "1") {
+            document.getElementById("doitagain").innerHTML = "This account cannot be found";
+        }
+    </script>
+    </body>
+    <!---onsubmit="findAccount(document.getElementById('addressform').value"--->
+</html>
