@@ -27,7 +27,7 @@ and open the template in the editor.
             } catch (e) {
                 alert("There has been a problem making the request." + e.message());
             }
-                xmlhttp.open("GET", "ftp://pwmpress@ftp.playswithmurder.com/www.playswithmurder.com/account%20db.json", true);
+                xmlhttp.open("GET", "http://www.playswithmurder.com/app/accountdb.json", true);
                 xmlhttp.onreadystatechange = function() {
                    if (xmlhttp.readyState == 4 && (xmlhttp.status == 200 || xmlhttp.status == 0)) {
                        alert("in loop");
