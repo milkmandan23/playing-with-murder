@@ -10,7 +10,7 @@
 	<description>
 		test app
 	</description>
-	<access origin="*" />
+	<access origin="*"/>
 	<!--- core plugins --->
 	<gap:platform name="ios" />
 	<gap:platform name="android" />

@@ -10,10 +10,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <script>
+<script src="../js/jquery-1.9.1.js"></script>
+<script>
             
             function findAccount(address) {
-                alert(address);
+               alert(address);
                 var xmlhttp;
                 try {
                 if (window.XMLHttpRequest) {
@@ -26,34 +27,84 @@ and open the template in the editor.
             } catch (e) {
                 alert("There has been a problem making the request." + e.message());
             }
-                xmlhttp.open("GET", "http://google.com", true);
+                xmlhttp.open("GET", "ftp://pwmpress@ftp.playswithmurder.com/www.playswithmurder.com/account%20db.json", true);
                 xmlhttp.onreadystatechange = function() {
                    if (xmlhttp.readyState == 4 && (xmlhttp.status == 200 || xmlhttp.status == 0)) {
                        alert("in loop");
                        alert(xmlhttp.readyState + " " + xmlhttp.status);
-                      /*  var xmlDocTemp = xmlhttp.responseText;
-                        var parser = new DOMParser();
-                        var xmlDoc = parser.parseFromString(xmlDocTemp, "application/xml");
-                        accounts = xmlDoc.getElementsByTagName("account");
+                        obj = JSON.parse(xmlhttp.responseText);
+                        alert(obj);
                         for (i = 0; i < accounts.length; i++) {
                             if (accounts[i].getAttribute("address") == address) {
-                                alert("anything?");
                                 document.getElementById("blank").innerHTML = accounts[i].getElementsByTagName("mys")[0].innerHTML;
                                 window.localStorage.setItem("account", address);
                                 return;
                             }
-                        }*/
+                        }
                         
-                    }
-                }
-    
-    
+                    } 
+   // https://s3-us-west-2.amazonaws.com/account.db/account+db.json
 
-                
+    
+                }
                 xmlhttp.send();
-                
-                
+    }
+    /*function test(address) {
+        alert(address);
+        $.get("ftp://pwmpress@ftp.playswithmurder.com/www.playswithmurder.com/account%20db.json", function(result){
+           
+            obj = JSON.parse(result);
+            for (i = 0; i < obj.accounts.length; i++) {
+                alert("loop: " + obj.accounts[i].address);
+                if (obj.accounts[i].address === address) {
+                    window.localStorage.setItem('account', address);
+                    stories = "";
+                    mys = obj.accounts[i].mys;
+                    for (j = 0; j < mys.length; j++) {
+                        switch(mys[j].name) {
+                            case "baron_castaign":
+                                stories = stories + "c";
+                                break;
+                            case "manhattan":
+                                stories = stories + "m";
+                                break;
+                            default: break;
+                        }
+                    }
+                    alert(stories);
+                    window.localStorage.setItem('mys', stories);
+                }
             }
+        
+        });*/
+    function test(address) {
+        alert(address);
+       $.ajax({
+	url: 'ftp://pwmpress@ftp.playswithmurder.com/www.playswithmurder.com/account%20db.json',
+	dataType: 'jsonp',
+	jsonp: 'jsoncallback',
+	timeout: 5000,
+	success: function(data, status){
+		alert("hello");
+	},
+	error: function(){
+		alert("a;lskdjf");
+            },
+        statusCode: {
+            0: function () {
+                alert("bbb");
+            }
+        }
+})
+    }
+$(document).ready(function(){
+    alert('getting');
+// 
+});         
+ //               
+                
+                
+            
         </script>
     </head>
     <body>
@@ -65,7 +116,7 @@ and open the template in the editor.
                     <tr><td>Once you have purchased your game on PlayingWithMurder.com, 
                             enter the email address you used on your order to unlock 
                             access to your games</td></tr>
-                    <tr><td><form name="login" onsubmit="findAccount(addressform.value)"><input type="text" name="addressform"></form></td></tr>
+                    <tr><td><form name="login" onsubmit="findAccount(document.getElementById('addressform').value)"><input id="addressform" type="text" name="addressform"></form></td></tr>
                     
                 </table>
                 
@@ -74,6 +125,9 @@ and open the template in the editor.
     <script>
         if (window.localStorage.getItem("notfound") == "1") {
             document.getElementById("doitagain").innerHTML = "This account cannot be found";
+        }
+        if (window.localStorage.getItem("account") != "") {
+            document.location = "story select.html";
         }
     </script>
     </body>

@@ -11,13 +11,29 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/index.css">
         
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script>
+            function loadMystery() {
+                alert(window.localStorage.getItem(window.localStorage.getItem("current")));
+                curDB = JSON.parse(window.localStorage.getItem(window.localStorage.getItem("current")));
+                document.getElementById("title").innerHTML = curDB.name;
+                document.getElementById("titlei").innerHTML = curDB.name;
+            }
+        </script>
     </head>
     <body>
     <center>
         <div id="backdrop1">
-            <div id="backdrop3">
-                
+            <h4 id="title"></h4>
+            <div id="backdrop3" style="position:absolute;top:50px">
+                <table>
+                    <tr><td><h1>Welcome!</h1></td></tr>
+                    <tr><td>This app will guide you through hosting <i id="titlei"></i></td></tr>
+                    <tr><td>Click a button below to get started</td></tr>
+                </table>
             </div>
         </div>
+    </center>
+        <script>loadMystery()</script>
     </body>
 </html>

@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 
-
-window.localStorage.setItem("key", "testval");
+/*window.localStorage.setItem("key", "testval");
 window.localStorage.setItem("account","");
-window.localStorage.setItem("mys","ms");
+window.localStorage.setItem("mys","mcs");
 window.localStorage.setItem("current", "");
-window.localStorage.setItem("notfound","0");
+window.localStorage.setItem("notfound","0");*/
