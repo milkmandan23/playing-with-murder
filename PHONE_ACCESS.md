@@ -35,6 +35,56 @@ computer **and** your phone, sign in with the same account, then open
 (not exposed to the public internet), and the address doesn't change. Best
 option if you'll do this regularly.
 
+## MAMP virtual-host sites (e.g. `veith.virtual.local`)
+
+MAMP serves sites by **name-based virtual host**, so two things must be true for
+another device to load one:
+
+1. The hostname must resolve to the Mac's IP.
+2. The HTTP request must carry that hostname (so Apache picks the right vhost).
+
+Editing `/etc/hosts` solves both on a laptop, but iOS won't let you edit it.
+The trick for the phone is a wildcard-DNS service — [sslip.io](https://sslip.io)
+resolves `<any-labels>.<ip-with-dashes>.sslip.io` to that IP, including your
+Mac's Tailscale IP — combined with a `ServerAlias`.
+
+Worked example for `https://veith.virtual.local:8890`:
+
+1. Get the Mac's Tailscale IP (run on the Mac):
+   ```
+   tailscale ip -4          # e.g. 100.64.1.5
+   ```
+2. The sslip.io hostname (dots → dashes only in the IP part):
+   ```
+   veith.virtual.100-64-1-5.sslip.io
+   ```
+3. Add the alias to that site's vhost in `httpd-vhosts.conf`, then restart MAMP:
+   ```apache
+   <VirtualHost *:8890>
+     ServerName  veith.virtual.local
+     ServerAlias veith.virtual.100-64-1-5.sslip.io
+     DocumentRoot "/your/path/to/veith"
+     # ...your existing SSL directives stay...
+   </VirtualHost>
+   ```
+4. On the phone (on the same tailnet), open — keeping scheme and port:
+   ```
+   https://veith.virtual.100-64-1-5.sslip.io:8890
+   ```
+
+**HTTPS note:** the MAMP cert is issued for `veith.virtual.local`, not the
+sslip.io name, so the browser shows a certificate-mismatch warning. Tap
+*Show Details → visit this website* to proceed (safe for a local dev cert).
+To avoid it, use plain `http://…` on MAMP's non-SSL port, or later issue a cert
+that lists the sslip.io name as a Subject Alternative Name.
+
+On other Macs/PCs (not iPhone) you can skip sslip.io and just add the name to
+that machine's `/etc/hosts`, pointing at the Mac's Tailscale IP:
+
+```
+100.64.1.5   veith.virtual.local
+```
+
 ## Notes
 
 - Chrome sync (signing into the same Google account on both devices) syncs tabs
