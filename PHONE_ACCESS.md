@@ -85,6 +85,40 @@ that machine's `/etc/hosts`, pointing at the Mac's Tailscale IP:
 100.64.1.5   veith.virtual.local
 ```
 
+## My setup: `boilerplate.virtual.local` on MAMP PRO (Tailscale IP 100.127.30.31)
+
+Concrete, ready-to-use values for this machine. MAMP PRO regenerates its Apache
+config on every restart, so add the alias **through the app**, not by editing a
+file (file edits get wiped).
+
+1. MAMP PRO → **Hosts** → select `boilerplate.virtual.local`.
+2. Add the alias via the **Host alias** field (6.x), or the **Extended** tab
+   ("Additional parameters for the virtual host server"):
+   ```apache
+   ServerAlias boilerplate.virtual.100-127-30-31.sslip.io
+   ```
+3. Confirm the **SSL** tab is enabled for the host (it already is — site loads
+   over https on 8890).
+4. Click **restart** so MAMP PRO regenerates and reloads Apache.
+
+Then on the phone (same tailnet):
+```
+https://boilerplate.virtual.100-127-30-31.sslip.io:8890/avdc/login
+```
+
+Expect the certificate-mismatch warning (cert is for `boilerplate.virtual.local`,
+not the sslip.io name) — tap *Show Details → visit this website* to proceed.
+
+For another Mac/PC instead of the phone, skip sslip.io and add to its
+`/etc/hosts`:
+```
+100.127.30.31   boilerplate.virtual.local
+```
+
+> If the Mac is ever removed and re-added to the tailnet its Tailscale IP can
+> change; update `100-127-30-31` in the alias if that happens
+> (`tailscale ip -4` to recheck).
+
 ## Notes
 
 - Chrome sync (signing into the same Google account on both devices) syncs tabs
